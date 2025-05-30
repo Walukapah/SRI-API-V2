@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { execSync } = require('child_process');
-const ytdl = require('ytdl-core'); // Add this package
+const ytdl = require('ytdl-core');
 const fs = require('fs');
 const path = require('path');
 
@@ -17,12 +17,14 @@ const formatFileSize = (bytes) => {
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]; // Fixed the parenthesis here
 };
 
 const cleanTitle = (title) => {
   return title.replace(/[^\w\s]/gi, '').trim();
 };
+
+// Rest of your existing youtubedl.js code...
 
 // Function to get download links
 const getDownloadLinks = async (videoId, title) => {
